@@ -63,7 +63,8 @@ bool check_mountpoint_exists(char *target) {
     // Read every partition line by line
     while (fgets(line, sizeof(line), fp) != NULL) {
         char *copy = strdup(line); // Make a temporary copy of the line
-        char *mountpoint = strtok(NULL, " "); // Get the mountpoint
+        char *mountpoint = strtok(copy, " "); // Get the mountpoint
+        mountpoint = strtok(NULL, " ");
 
         // A mountpoint exists
         if (strncmp(mountpoint, target, strlen(target)) == 0) {
